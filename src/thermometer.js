@@ -26,7 +26,7 @@
  *
  */
 class Thermometer {
-  // write your code here for the private class field called celsius
+  #celsius = 0;
 
   /**
    * @constructor
@@ -34,6 +34,7 @@ class Thermometer {
    */
   constructor(celsius) {
     // write your code here
+    this.#celsius = celsius;
   }
 
   /*  -------- celsius -------------------*/
@@ -45,6 +46,7 @@ class Thermometer {
    * */
   get celsius() {
     // write your code here
+    return this.#celsius;
   }
 
   /**
@@ -55,6 +57,7 @@ class Thermometer {
    */
   set celsius(tempCelsius) {
     // write your code here
+    this.#celsius = tempCelsius;
   }
 
   /*  -------- kelvin -------------------*/
@@ -65,7 +68,7 @@ class Thermometer {
    * @description - returns the kelvin temperature
    */
   get kelvin() {
-    // write your code here
+    return this.#celsius + 273.15;
   }
 
   /**
@@ -76,6 +79,7 @@ class Thermometer {
    */
   set kelvin(tempKelvin) {
     // write your code here
+    this.#celsius = tempKelvin - 273.15;
   }
 
   /*  -------- fahrenheit -------------------*/
@@ -87,6 +91,7 @@ class Thermometer {
    */
   get fahrenheit() {
     // write your code here
+    return this.#celsius * (9 / 5) + 32;
   }
 
   /**
@@ -97,6 +102,7 @@ class Thermometer {
    */
   set fahrenheit(tempFahrenheit) {
     // write your code here
+    this.#celsius = (tempFahrenheit - 32) * (5 / 9);
   }
 
   /**
@@ -115,6 +121,13 @@ class Thermometer {
    */
   toString(unit) {
     // write your code here
+    if (unit === 'K') {
+      return this.kelvin.toString() + unit;
+    }
+    if (unit === 'F') {
+      return `${this.fahrenheit.toString()}°F`;
+    }
+    return `${this.celsius.toString()}°C`;
   }
 }
 
